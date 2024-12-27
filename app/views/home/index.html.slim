@@ -1,0 +1,7 @@
+- if user_signed_in?
+  = button_to "Sign out", destroy_user_session_path, method: :delete
+- elsif admin_signed_in?
+  = button_to "Sign out", destroy_admin_session_path, method: :delete
+- else
+  = button_to 'Log In as User', new_user_session_path, class: 'btn gradient-btn', data: { turbo: false }
+  = button_to 'Log In as Admin', new_admin_session_path, class: 'btn gradient-btn', data: { turbo: false }

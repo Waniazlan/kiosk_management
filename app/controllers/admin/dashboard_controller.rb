@@ -1,7 +1,10 @@
 class Admin::DashboardController < ApplicationController
-
-    layout "adminapp"  # Use the "adminapp" layout for all actions in this controller
+      # Ensure only admins can access the admin area
+      before_action :authenticate_admin!
   
-  def index
-  end
+      def index
+        # Dashboard logic for admins
+      end
 end
+
+  

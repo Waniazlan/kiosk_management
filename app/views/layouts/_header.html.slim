@@ -1,0 +1,12 @@
+
+nav.navbar
+  .container
+    .logo
+      span.brand-name aranyak
+    - if user_signed_in?
+      = button_to "Sign out", destroy_user_session_path, method: :delete
+    - else 
+      = button_to 'Log In', new_user_session_path, class: 'btn gradient-btn', data: { turbo: false }
+    
+
+    
