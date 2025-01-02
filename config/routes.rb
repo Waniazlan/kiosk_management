@@ -1,11 +1,13 @@
-require 'sidekiq/web'
+require "sidekiq/web"
 Rails.application.routes.draw do
+  resources :suppliers
   # Root path
   root "home#index"
 
   # General routes
   resources :utilities
   resources :products
+  resources :suppliers
   resources :category_products
   resources :category_utilities
   resources :kiosks do
@@ -38,5 +40,5 @@ Rails.application.routes.draw do
   # Devise routes
   devise_for :admin, controllers: { sessions: "admin/sessions" }
   devise_for :users, controllers: { sessions: "users/sessions" }
-  mount Sidekiq::Web => '/sidekiq'
+  mount Sidekiq::Web => "/sidekiq"
 end

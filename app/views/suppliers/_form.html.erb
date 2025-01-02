@@ -1,0 +1,38 @@
+<div class="card p-3 mb-3">
+  <%= form_with(model: supplier, class: "needs-validation", novalidate: true) do |form| %>
+    <% if supplier.errors.any? %>
+      <div class="alert alert-danger">
+        <h4 class="alert-heading"><%= pluralize(supplier.errors.count, "error") %> prohibited this supplier from being saved:</h4>
+        <ul>
+          <% supplier.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :supplier_name, class: "form-label" %>
+      <%= form.text_field :supplier_name, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :person_in_charge, class: "form-label" %>
+      <%= form.text_field :person_in_charge, class: "form-control" %>
+    </div>
+    
+    <div class="mb-3">
+      <%= form.label :contact_number, class: "form-label" %>
+      <%= form.text_field :contact_number, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :address, class: "form-label" %>
+      <%= form.text_field :address, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.submit "Save Supplier", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
