@@ -76,6 +76,6 @@ class KiosksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def kiosk_params
-      params.require(:kiosk).permit(:name, :location)
+      params.require(:kiosk).permit(:name, :location, :address)
     end
 end

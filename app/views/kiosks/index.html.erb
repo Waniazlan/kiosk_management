@@ -39,6 +39,7 @@
         <th>#</th>
         <th>Code</th>
         <th>Location</th>
+        <th>Address</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -48,6 +49,7 @@
           <td><%= index + 1 %></td>
           <td><%= kiosk.name %></td>
           <td><%= kiosk.location %></td>
+          <td><%= kiosk.address %></td>
           <td>
             <%= link_to "Show", kiosk , class: "btn btn-primary btn-sm"%> 
             <%= link_to "Edit", edit_kiosk_path(kiosk),  class: "btn btn-warning btn-sm" %> 
