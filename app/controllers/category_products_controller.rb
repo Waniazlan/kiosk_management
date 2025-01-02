@@ -16,7 +16,7 @@ class CategoryProductsController < ApplicationController
   end
 
   def new
-    @category_products = CategoryProduct.new
+    @category_product = CategoryProduct.new
   end
   # GET /category_products/:id/edit
   def edit
@@ -36,11 +36,10 @@ class CategoryProductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /kiosks/1 or /kiosks/1.json
   def update
     respond_to do |format|
       if @category_product.update(category_product_params)
-        format.html { redirect_to @kiosk, notice: "Kiosk was successfully updated." }
+        format.html { redirect_to @category_product, notice: "category product was successfully updated." }
         format.json { render :show, status: :ok, location: @category_product }
       else
         format.html { render :edit, status: :unprocessable_entity }

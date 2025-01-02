@@ -1,22 +1,8 @@
-<h1>Edit Category Product</h1>
+<% content_for :title, "Editing category product" %>
 
-<%= form_with model: [@product, @category_product], local: true do |form| %>
-  <% if @category_product.errors.any? %>
-    <div class="alert alert-danger">
-      <ul>
-        <% @category_product.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<h1>Editing category product</h1>
 
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "form-control" %>
-  </div>
+<%= render "form", category_product: @category_product %>
 
-  <%= form.submit "Update Category Product", class: "btn btn-success" %>
-<% end %>
+<br>
 
-<%= link_to 'Back to Category Products', category_products_path(@product), class: "btn btn-secondary" %>

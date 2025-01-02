@@ -1,23 +1,58 @@
-<h1>Category Products</h1>
-<%= link_to 'New Category Product', new_category_product_path(@product), class: "btn btn-primary" %>
+<p style="color: green"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @category_products.each do |category_product| %>
+<% content_for :title, "Category products" %>
+
+<h1>
+  <span>category product List</span>
+</h1>
+
+<%= form_with url: category_products_path, method: :get, class: "mb-3", local: true do %>
+  <div class="row align-items-center">
+    <!-- Search field -->
+    <div class="col-md-4 mb-3 mb-md-0">
+      <%= text_field_tag :search, params[:search], placeholder: "Search category product", class: "form-control" %>
+    </div>
+
+    <!-- Search button -->
+    <div class="col-md-2 mb-3 mb-md-0">
+      <%= submit_tag "Search", class: "btn btn-secondary w-100" %>
+    </div>
+
+    <!-- Reset button -->
+    <div class="col-md-2 mb-3 mb-md-0">
+      <%= link_to "Reset", category_products_path, class: "btn btn-outline-secondary w-100" %>
+    </div>
+
+    <!-- new category_product button -->
+    <div class="col-md-2 mb-3 mb-md-0">
+      <%= link_to "New category product", new_category_product_path, class: "btn btn-grad w-100" %>
+    </div>
+  </div>
+<% end %>
+
+
+
+<div id="category_products">
+  <table class="table">
+    <thead style="background-color: #a2e292; color: black;">
       <tr>
-        <td><%= category_product.name %></td>
-        <td>
-          <%= link_to 'Show', category_product_path(@product, category_product) %> |
-          <%= link_to 'Edit', edit_category_product_path(@product, category_product) %> |
-          <%= link_to 'Destroy', category_product_path(@product, category_product), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
+        <th>#</th>
+        <th>Name</th>
+        <th>Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @category_products.each_with_index do |category_product, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= category_product.name %></td>
+          <td>
+            <%= link_to "Show", category_product , class: "btn btn-primary btn-sm"%> 
+            <%= link_to "Edit", edit_category_product_path(category_product),  class: "btn btn-warning btn-sm" %> 
+            <%= link_to "Delete", category_product, method: :delete, data: { confirm: "Are you sure?" } , class: "btn btn-danger btn-sm"%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
