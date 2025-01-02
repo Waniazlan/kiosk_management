@@ -177,6 +177,34 @@ h1 span {
   color: #fff;
 }
 
+/* Dropdown Menu Styling */
+.sidebar .dropdown-menu {
+  background-color: #dfd3bd; /* Match sidebar background */
+  border: none; /* Remove default border */
+  box-shadow: none; /* Remove shadow for flat design */
+  margin-top: 5px; /* Adjust dropdown position */
+}
+
+.sidebar .dropdown-menu .dropdown-item {
+  color: #2F4F2F; /* Match sidebar text color */
+  font-size: 16px;
+  padding: 8px 15px;
+  border-radius: 5px; /* Rounded edges for items */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar .dropdown-menu .dropdown-item:hover {
+  background-color: #388E3C; /* Highlight on hover */
+  color: #fff;
+}
+
+/* Dropdown Toggle Fix */
+.sidebar .dropdown-toggle::after {
+  margin-left: 10px; /* Space between text and arrow */
+  vertical-align: middle;
+}
+
+
 /* Small Screens: Toggle Button and Collapsible Sidebar */
 @media (max-width: 768px) {
   .sidebar {

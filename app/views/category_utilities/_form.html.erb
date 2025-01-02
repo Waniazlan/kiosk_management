@@ -1,0 +1,23 @@
+<div class="card p-3 mb-3">
+  <%= form_with(model: category_utility, class: "needs-validation", novalidate: true) do |form| %>
+    <% if category_utility.errors.any? %>
+      <div class="alert alert-danger">
+        <h4 class="alert-heading"><%= pluralize(category_utility.errors.count, "error") %> prohibited this category utility from being saved:</h4>
+        <ul>
+          <% category_utility.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.submit "Save category putility", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
