@@ -5,15 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          has_many :attendant_shifts, dependent: :destroy
-  def check_in
-    self.time_in = Time.current.in_time_zone('Asia/Kuala_Lumpur')
-    save
-  end
-      
-  def check_out
-    self.time_out = Time.current.in_time_zone('Asia/Kuala_Lumpur')
-    save
-  end
+
   def duration
     return nil unless time_in && time_out 
 

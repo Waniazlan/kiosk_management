@@ -21,23 +21,23 @@
   <table class="table table-striped">
     <thead>
       <tr>
+        <th>Kiosk</th>
         <th>Time In</th>
         <th>Time Out</th>
-        <th>Duration</th>
-        <th>Kiost</th>
       </tr>
     </thead>
     <tbody>
-      <% if @user.present? %>
-        <tr>
-          <td><%= @user.time_in %></td>
-          <td><%= @user.time_out %></td>
-          <td><%= @user.duration %></td>
-          <td>Kiost</td>
-        </tr>
+      <% if @attendances.present? %>
+        <% @attendances.each do |attendance| %>
+          <tr>
+            <td><%= attendance.kiosk.name %></td>
+            <td><%= attendance.checked_in_at|| 'N/A' %></td>
+            <td><%= attendance.checked_out_at|| 'N/A' %></td>
+          </tr>
+        <% end %>
       <% else %>
         <tr>
-          <td colspan="5">No shifts found for this user.</td>
+          <td colspan="4">No shifts found for this user.</td>
         </tr>
       <% end %>
     </tbody>

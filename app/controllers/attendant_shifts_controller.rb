@@ -7,25 +7,18 @@ class AttendantShiftsController < ApplicationController
 
     def index
         @user = User.all
+       
     end
 
     # GET /attendant_shifts/:id
     def show
         @user = User.find_by(id: params[:id])
-        Rails.logger.info " the user for this id is #{@user.inspect}"
+        @attendances = @user.attendant_shifts
+        Rails.logger.info "the attendance is #{@attendances.inspect}"
+       
     end
 
-    def check_in
-      @kiosk = Kiosk.find(params[:id])
-      Rails.logger.info " the kiost id is #{@kiost.inspect}"
-      # if Attendance.check_in(@user)
-      #   render json: { message: 'Checked in successfully!' }, status: :ok
-      # else
-      #   render json: { message: 'You are already checked in.' }, status: :unprocessable_entity
-      # end
-    end
-
-
+   
     private
 
     # Set the @attendant_shift for show, edit, update, and destroy actions

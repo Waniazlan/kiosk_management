@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   # Admin namespace
   namespace :admin do
-    get "dashboard", to: "dashboard#index", as: "dashboard"
+    root to: "dashboard#index", as: :dashboard
   end
 
   # User namespace
@@ -32,8 +32,6 @@ Rails.application.routes.draw do
     get "dashboard", to: "dashboard#index", as: "dashboard"
     get "kiosk/:id", to: "kiosks#show", as: "kiost"
     post :check_in, to: "dashboard#check_in", as: "check_in"
-    # post "kiosk/:id/check_in", to: "kiosks#check_in", as: "check_in"
-    # Check-in and check-out routes
     post :check_out, to: "dashboard#check_out", as: "check_out"
   end
 
