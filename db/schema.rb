@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_02_072715) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_02_074611) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_02_072715) do
 
   create_table "attendant_shifts", force: :cascade do |t|
     t.bigint "kiosk_id", null: false
-    t.datetime "checked_in_at", null: false
+    t.datetime "checked_in_at"
     t.datetime "checked_out_at"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -49,6 +49,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_02_072715) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_category_utilities_on_name", unique: true
+  end
+
+  create_table "combo_products", force: :cascade do |t|
+    t.bigint "combo_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["combo_id"], name: "index_combo_products_on_combo_id"
+    t.index ["product_id"], name: "index_combo_products_on_product_id"
   end
 
   create_table "combos", force: :cascade do |t|
@@ -141,6 +150,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_02_072715) do
 
   add_foreign_key "attendant_shifts", "kiosks"
   add_foreign_key "attendant_shifts", "users"
+  add_foreign_key "combo_products", "combos"
+  add_foreign_key "combo_products", "products"
   add_foreign_key "product_statuses", "kiosks"
   add_foreign_key "product_statuses", "products"
   add_foreign_key "products", "category_products"
